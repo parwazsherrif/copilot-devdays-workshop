@@ -36,3 +36,9 @@
 - Keep `:root` variables as the source of color values in `src/style.css` instead of hard-coded colors.
 - When adding or changing app behavior, update the relevant tests in `tests/*.test.js` if the behavior is logic-driven and directly testable.
 - Use `module.exports` patterns only in files that are meant to be loaded by Node tests; browser scripts should not depend on the Node test environment.
+# how i like code written
+-keep code simple and readable
+-use clear varaible and function names
+-prefer small functions
+-use const/let instead of var
+-add comment only when the logic is not obvious
