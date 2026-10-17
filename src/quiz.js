@@ -1,6 +1,31 @@
 // Core quiz logic.
 // This file has NO browser (DOM) code so it can be tested with Node.js.
 
+function createQuiz(questions) {
+  return { questions, current: 0, score: 0, answered: false };
+}
+
+
+function answerQuestion(state, selectedIndex) {
+  const correct = isCorrect(state.questions[state.current], selectedIndex);
+  return {
+    state: {
+      ...state,
+      score: state.score + (correct ? 1 : 0),
+      answered: true,
+    },
+    correct,
+  };
+}
+
+function advanceQuestion(state) {
+  return { ...state, current: state.current + 1, answered: false };
+}
+
+function isQuizFinished(state) {
+  return state.current >= state.questions.length;
+}
+
 /**
  * Returns a new array with the items in random order.
  * The original array is not changed.
@@ -62,5 +87,16 @@ function getFeedbackMessage(grade) {
 
 // Lets Node.js tests load this file. Browsers ignore this block.
 if (typeof module !== "undefined" && module.exports) {
-  module.exports = { shuffle, isCorrect, calculatePercentage, getGrade, formatTimeLeft, getFeedbackMessage };
+  module.exports = {
+    createQuiz,
+    answerQuestion,
+    advanceQuestion,
+    isQuizFinished,
+    shuffle,
+    isCorrect,
+    calculatePercentage,
+    getGrade,
+    formatTimeLeft,
+    getFeedbackMessage,
+  };
 }
