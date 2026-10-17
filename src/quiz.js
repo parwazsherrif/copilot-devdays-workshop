@@ -44,3 +44,15 @@ function getGrade(percentage) {
 if (typeof module !== "undefined" && module.exports) {
   module.exports = { shuffle, isCorrect, calculatePercentage, getGrade };
 }
+function getFeedbackMessage(grade){
+  switch(grade){
+    case "A":
+      return "Excellent work!";
+    case "B":
+      return "Good job!";
+    case "C":
+      return "You can do better!";
+    default:
+      return "Keep practicing!";
+  }
+}
